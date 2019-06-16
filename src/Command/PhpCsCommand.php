@@ -19,7 +19,7 @@ class PhpCsCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        echo self::class . ': start' . PHP_EOL;
-        echo self::class . ': stop' . PHP_EOL;
+        $output->writeln(self::class . ': start');
+        $output->writeln(self::class . ': stop');
     }
 }

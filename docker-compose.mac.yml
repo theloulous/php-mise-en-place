@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  php:
+    volumes:
+      - docker-sync-mise-en-place:/var/www/mise-en-place:nocopy
+
+volumes:
+  docker-sync-mise-en-place:
+    external: true
