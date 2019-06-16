@@ -2,4 +2,7 @@ parameters:
     git_dir: .
     bin_dir: vendor/bin
     hooks_dir: ./.grumphp/hooks
+    ascii:
+        failed: ~
+        succeeded: ~
     tasks: {  }
