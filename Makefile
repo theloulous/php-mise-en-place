@@ -22,7 +22,7 @@ install.common:
 	docker-compose exec php bash -c "composer install"
 
 docker.up.linux:
-	docker-compose up -d
+	docker-compose up --build -d
 
 docker.down.linux:
 	docker-compose down --remove-orphans
@@ -38,11 +38,18 @@ docker.down.mac:
 install.mac: install.common docker.down.linux docker.up.mac
 install.linux: install.common
 
-### Docker
+##
+## Docker :
+## --------
+##
 
 .PHONY: install start stop connect
+
 install: $(INSTALL) ## install the project
+
 start: $(DOCKER_UP) ## start the container
+
 stop: $(DOCKER_DOWN) ## stop the container
+
 connect: ## enter the container
 	docker-compose exec php bash
