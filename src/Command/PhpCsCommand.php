@@ -4,6 +4,7 @@ namespace App\Command;
 
 use App\PhpVersion;
 use App\PhpCsFixer\Configuration;
+use League\Plates\Engine;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputInterface;
@@ -24,6 +25,11 @@ class PhpCsCommand extends Command
         $output->writeln(self::class . ': start');
 
         $phpCsFixerConfiguration = $this->decideCsFixerConfiguration($input, $output);
+
+        $templates = new Engine(dirname(__DIR__) .'/PhpCsFixer/template');
+        $fileData = $templates->render('.php_cs', ['configuration' => $phpCsFixerConfiguration]);
+
+        file_put_contents('./.php_cs', $fileData);
 
         $output->writeln(self::class . ': stop');
     }

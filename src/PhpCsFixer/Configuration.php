@@ -5,8 +5,10 @@ namespace App\PhpCsFixer;
 use App\PhpVersion;
 use App\PhpVersionException;
 
-class Configuration
+class Configuration implements \IteratorAggregate
 {
+    protected $rules;
+
     /**
      * Configuration constructor.
      * @param string $version
@@ -49,6 +51,32 @@ class Configuration
         }
     }
 
+    public function getIterator()
+    {
+        return  (function () {
+            foreach ($this->rules as $rule => $value) {
+                yield $rule => $this->decorate($value);
+            }
+        })();
+    }
+
+    private function decorate($value)
+    {
+        if (is_bool($value)) {
+            return $value ? 'true' : 'false';
+        }
+        if (is_string($value)) {
+            return "'". $value . "'";
+        }
+        if (is_array($value)) {
+            $string = '';
+            foreach ($value as $item => $subValue) {
+                $string .= "'". $item ."' => ". $this->decorate($subValue) . ",";
+            }
+            return '['. $string .']';
+        }
+        throw new ConfigurationException('Unvalid value for cs fixer configuration');
+    }
     /**
      * @param string $ruleName
      * @return array|bool|null
@@ -57,4 +85,8 @@ class Configuration
     {
         return $this->rules[$ruleName] ?? null;
     }
+}
+
+class ConfigurationException extends \Exception
+{
 }
