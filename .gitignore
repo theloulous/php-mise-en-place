@@ -1,3 +1,6 @@
 /.idea/
 /vendor/
 /.docker-sync/
+
+# phpunit
+/.phpunit.result.cache
