@@ -55,6 +55,6 @@ class Configuration
      */
     public function getRule(string $ruleName)
     {
-        return $this->rules[$ruleName];
+        return $this->rules[$ruleName] ?? null;
     }
 }
