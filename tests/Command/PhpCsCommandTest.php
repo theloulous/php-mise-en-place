@@ -18,6 +18,7 @@ class PhpCsCommandTest extends TestCase
         $command = $application->find('php-cs-fixer');
 
         $commandTester = new CommandTester($command);
+        $commandTester->setInputs(['7.3']);
         $commandTester->execute([
            'command' => $command->getName(),
         ]);
