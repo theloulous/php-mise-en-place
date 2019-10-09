@@ -5,4 +5,10 @@ parameters:
     ascii:
         failed: ~
         succeeded: ~
-    tasks: {  }
+    tasks:
+      composer: ~
+      phpstan: ~
+      phpcsfixer2: ~
+      jsonlint: ~
+      xmllint: ~
+      yamllint: ~
