@@ -3,7 +3,7 @@
     "description": "The loulous' PHP generator",
     "type": "project",
     "require": {
-        "symfony/console": "^4.3",
+        "symfony/console": "^5.0",
         "symfony/filesystem": "^4.3"
     },
     "require-dev": {
