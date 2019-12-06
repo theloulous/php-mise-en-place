@@ -32,6 +32,8 @@ class PhpCsCommand extends Command
         file_put_contents('./.php_cs', $fileData);
 
         $output->writeln(self::class . ': stop');
+
+        return 0;
     }
 
     /**
