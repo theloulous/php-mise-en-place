@@ -205,7 +205,7 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v4.4.9",
+            "version": "v4.4.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
